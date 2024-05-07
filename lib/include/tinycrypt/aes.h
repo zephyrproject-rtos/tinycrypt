@@ -82,7 +82,7 @@ int tc_aes128_set_encrypt_key(TCAesKeySched_t s, const uint8_t *k);
  *  @brief AES-128 Encryption procedure
  *  Encrypts contents of in buffer into out buffer under key;
  *              schedule s
- *  @note Assumes s was initialized by aes_set_encrypt_key;
+ *  @note Assumes s was initialized by aes_set_encrypt_key();
  *              out and in point to 16 byte buffers
  *  @return  returns TC_CRYPTO_SUCCESS (1)
  *           returns TC_CRYPTO_FAIL (0) if: out == NULL or in == NULL or s == NULL
@@ -110,14 +110,14 @@ int tc_aes_encrypt(uint8_t *out, const uint8_t *in,
 int tc_aes128_set_decrypt_key(TCAesKeySched_t s, const uint8_t *k);
 
 /**
- *  @brief AES-128 Encryption procedure
+ *  @brief AES-128 Decryption procedure
  *  Decrypts in buffer into out buffer under key schedule s
  *  @return returns TC_CRYPTO_SUCCESS (1)
  *          returns TC_CRYPTO_FAIL (0) if: out is NULL or in is NULL or s is NULL
- *  @note   Assumes s was initialized by aes_set_encrypt_key
+ *  @note   Assumes s was initialized by tc_aes128_set_decrypt_key()
  *          out and in point to 16 byte buffers
- *  @param out IN/OUT -- buffer to receive ciphertext block
- *  @param in IN -- a plaintext block to encrypt
+ *  @param out IN/OUT -- buffer to receive plaintext block
+ *  @param in IN -- a chiphertext block to decrypt
  *  @param s IN -- initialized AES key schedule
  */
 int tc_aes_decrypt(uint8_t *out, const uint8_t *in, 
